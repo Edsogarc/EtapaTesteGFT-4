@@ -8,15 +8,15 @@
             int n = int.Parse(Console.ReadLine());
 
             int[] vetor = new int[n];
-
+            // Digitar um número ao lado do outro com espaço
             Console.Write("Digíte os " + n + " valores inteiros do vetor: ");
-            n = int.Parse(Console.ReadLine());
+            string[] x = Console.ReadLine().Split(' ');
+            
             for (int i = 0; i < n; i++)
             {
-                vetor[i] = n;
+                vetor[i] = int.Parse(x[i]);
             }
 
-            //numeros pares
             int pares = 0;
             for (int i = 0; i < vetor.Length; i++)
             {
@@ -26,54 +26,32 @@
                 }
             }
             Console.WriteLine("Quantidade de numeros pares: " + pares);
-
-            //numeros impares
-            int impares = n - pares;
+            int impares = 0;
+            for (int i = 0; i < vetor.Length; i++)
+            {
+                if (vetor[i] % 2 == 1)
+                {
+                    impares++;
+                }
+            }
             Console.WriteLine("Quantidade de numeros impares: " + impares);
 
-            //Quantidade de números repetidos
-            //encontra o maior e o menor numero do vetor
-            int maior = vetor[0];
-            for (int i = 0; i < vetor.Length; i++)
+            string repetidos = "";
+            int count = 0;
+            for (int i = 0; i < n - 1; i++)
             {
-                if (maior < vetor[i+1])
+                for (int j = i + 1; j < n; j++)
                 {
-                    maior = vetor[i+1];
-                }
-            }
-
-            int menor = vetor[0];
-            for (int i = 0; i < vetor.Length; i++)
-            {
-                if (menor > vetor[i+1])
-                {
-                    menor = vetor[i+1];
-                }
-            }
-
-            //confere se existe algum repetido entre todos os numeros entre o maior e o menor
-           int[] repetidos = new int[vetor.Length];
-            for (int i = menor; i <= maior; i++)
-            {
-                int count = 0;
-                for (int j = 0; j < n; j++)
-                {
-                    if (vetor[j] == vetor[i])
+                    if (vetor[i] == vetor[j])
                     {
+                        repetidos = repetidos + vetor[i]+" ";
                         count++;
-                        if (!(vetor[j] == vetor[i]))
-                        {
-                            vetor[i] = vetor[j];
-                        }
                     }
                 }
             }
-            
-            Console.WriteLine("Os numeros repetidos são: ");
-            for (int i = 0; i < repetidos.Length; i++)
-            {
-                Console.WriteLine(i);
-            }
+
+            Console.WriteLine("Quantidade de números repitidos: "+count);
+            Console.WriteLine("Esses número se repetiram: "+repetidos);
         }
     }
 }
