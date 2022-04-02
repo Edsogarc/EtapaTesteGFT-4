@@ -1,3 +1,4 @@
+using System.Globalization;
 namespace Exercicio1.Entities
 {
     class Memoria : Hardware
@@ -17,6 +18,15 @@ namespace Exercicio1.Entities
             Frequencia = frequencia;
             Capacidade = capacidade;
             Tipo = tipo;
+        }
+        public override string DetalhesHardware()
+        {
+            return "-----Memoria-----\n"
+            +"Id: "+Id+"\n"
+            +"Descrição: "+Descricao+"\n"
+            +"Valor: R$"+Valor.ToString("F2", CultureInfo.InvariantCulture)+"\n"
+            +"Fabricante: "+Fabricante+"\n"
+            +"Frequência: "+ Frequencia+"Mhz Capacidade: "+Capacidade + "GB Tipo: "+Tipo; 
         }
     }
 }

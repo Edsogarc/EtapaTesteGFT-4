@@ -1,3 +1,4 @@
+using System.Globalization;
 namespace Exercicio1.Entities
 {
     class DiscoRigido : Hardware
@@ -16,6 +17,16 @@ namespace Exercicio1.Entities
             Capacidade = capacidade;
             Velocidade = velocidade;
             Tipo = tipo;
+        }
+        public override string DetalhesHardware()
+        {
+            return "-----Disco Rigido-----\n"
+            +"Id: "+Id+"\n"
+            +"Descrição: "+Descricao+"\n"
+            +"Valor: R$"+Valor.ToString("F2", CultureInfo.InvariantCulture)+"\n"
+            +"Fabricante: "+Fabricante+"\n" 
+            +"Capacidade: "+Capacidade + "GB Velocidade: "+Velocidade + "Rpm Tipo: "+Tipo;
+    
         }
     }
 }

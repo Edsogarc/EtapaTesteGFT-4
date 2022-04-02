@@ -1,3 +1,4 @@
+using System.Globalization;
 namespace Exercicio1.Entities
 {
     class Hardware
@@ -7,9 +8,6 @@ namespace Exercicio1.Entities
         public string Descricao { get; set; }
         public double Valor { get; set; }
         public string Fabricante { get; set; }
-        public Cpu Get { get; set; }
-        public Memoria GetM { get; set; }
-        public DiscoRigido GetD { get; set; }
         public Hardware()
         {
             
@@ -21,16 +19,12 @@ namespace Exercicio1.Entities
             Valor = valor;
             Fabricante = fabricante;
         }
-        public override string ToString()
+        public virtual string DetalhesHardware()
         {
             return "Id: "+Id+"\n"
-            +"Descrição "+ Descricao+"\n"
-            +"Valor +"+Valor+"\n"
-            +"Fabricante "+Fabricante+"\n"
-            +"CPU "+ "Clock "+Get.Clock + " Modelo "+Get.Modelo+"\n"
-            +"Memoria +"+GetM.Capacidade + GetM.Capacidade + GetM.Tipo+"\n"
-            +"Disco rigido "+ GetD.Capacidade + GetD.Velocidade + GetD.Tipo;
-    
+            +"Descrição "+Descricao+"\n"
+            +"Valor "+Valor.ToString("F2", CultureInfo.InvariantCulture)+"\n"
+            +"Fabricante "+Fabricante+"\n";
         }
     }
 }
